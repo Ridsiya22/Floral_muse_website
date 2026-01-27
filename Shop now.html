@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Buy Now | Floral Muse</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container my-4">
+  <h3 class="mb-3">Pink Roses Arrangement</h3>
+
+  <div class="row">
+    <!-- Image Column -->
+    <div class="col-md-5">
+      <img id="mainImage" src="l1.webp" class="img-fluid mb-3 rounded border" alt="Main Image">
+      <div class="d-flex gap-2">
+        <img src="l1.webp" class="img-thumbnail" style="width: 60px;" onclick="changeImage(this.src)">
+        
+      </div>
+      <p class="text-muted mt-2">Product ID: #13577</p>
+    </div>
+
+    <!-- Details Column -->
+    <div class="col-md-7">
+      <p id="priceDisplay" class="fs-4 text-danger">INR 3959</p>
+
+      <h6>Choose Variant:</h6>
+      <div class="btn-group mb-3" role="group">
+        <input type="radio" class="btn-check" name="variant" id="classic" checked>
+        <label class="btn btn-outline-dark" for="classic">Classic<br><small>INR 3959</small></label>
+
+        <input type="radio" class="btn-check" name="variant" id="deluxe">
+        <label class="btn btn-outline-dark" for="deluxe">Deluxe<br><small>INR 7720</small></label>
+
+        <input type="radio" class="btn-check" name="variant" id="premium">
+        <label class="btn btn-outline-dark" for="premium">Premium<br><small>INR 11679</small></label>
+      </div>
+
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="vaseSwitch" onchange="toggleVase()">
+        <label class="form-check-label" for="vaseSwitch">Add Glass Vase (INR 200)</label>
+      </div>
+
+      <div class="mt-3">
+        <label for="city" class="form-label">Delivery Location:</label>
+        <select class="form-select w-50" id="city">
+          <option>Chennai</option>
+          <option>Mumbai</option>
+          <option>Delhi</option>
+        </select>
+      </div>
+
+      <div class="mt-3">
+        <label class="form-label">Select Date:</label>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-secondary">Today<br><small>17-Jun</small></button>
+          <button class="btn btn-outline-secondary">Tomorrow<br><small>18-Jun</small></button>
+          <input type="date" class="form-control w-auto">
+        </div>
+      </div>
+
+      <div class="quantity-selector">
+            <label for="quantity" class="form-label mb-0">Quantity:</label>
+            <button type="button" class="btn btn-outline-secondary" onclick="updateQuantity(-1)">−</button>
+            <input type="number" id="quantity" value="1" min="1" class="form-control d-inline" style="width: 60px; text-align: center;" readonly />
+            <button type="button" class="btn btn-outline-secondary" onclick="updateQuantity(1)">+</button>
+          </div>
+
+          <p>Total: ₹<span id="totalPrice">0.00</span></p>
+
+          <form onsubmit="event.preventDefault(); alert('Order placed successfully!')">
+            <div class="mb-3">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-control" placeholder="Enter your name" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Delivery Address</label>
+              <textarea class="form-control" rows="3" placeholder="Enter address" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Payment Method</label>
+              <select class="form-select">
+                <option>UPI</option>
+                <option>Cash on Delivery</option>
+                <option>Credit/Debit Card</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Place Order</button>
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Recommendations -->
+  <hr class="my-5">
+  <h4>You may also like</h4>
+  <div class="row row-cols-1 row-cols-md-4 g-3">
+    <div class="col">
+      <div class="card">
+        <img src="l5.webp" class="card-img-top" alt="Red Roses">
+        <div class="card-body text-center">
+          <h6>Red Roses</h6>
+          <p class="text-danger">INR 3999</p>
+          <a href="Shop now.html" class="btn btn-outline-dark btn-sm">View</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <img src="l6.webp" class="card-img-top" alt="Mixed Flowers">
+        <div class="card-body text-center">
+          <h6>Mixed Flowers</h6>
+          <p class="text-danger">INR 3499</p>
+          <a href="buy-now.html?product=mixed-flowers" class="btn btn-outline-dark btn-sm">View</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <img src="l7.webp" class="card-img-top" alt="White Lilies">
+        <div class="card-body text-center">
+          <h6>White Lilies</h6>
+          <p class="text-danger">INR 5599</p>
+          <a href="buy-now.html?product=white-lilies" class="btn btn-outline-dark btn-sm">View</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <img src="l8.webp" class="card-img-top" alt="Carnation Combo">
+        <div class="card-body text-center">
+          <h6>Carnation Combo</h6>
+          <p class="text-danger">INR 2899</p>
+          <a href="buy-now.html?product=carnation-combo" class="btn btn-outline-dark btn-sm">View</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript 
+<script>
+  let basePrice = 3959;
+  let vasePrice = 0;
+
+  function updatePrice(price) {
+    basePrice = price;
+    displayPrice();
+  }
+
+  function toggleVase() {
+    vasePrice = document.getElementById("vaseSwitch").checked ? 200 : 0;
+    displayPrice();
+  }
+
+  function displayPrice() {
+    let total = basePrice + vasePrice;
+    document.getElementById("priceDisplay").textContent = "INR " + total;
+  }
+
+  function changeImage(src) {
+    document.getElementById("mainImage").src = src;
+  }
+
+  function addToCart() {
+    document.getElementById("cartMessage").classList.remove("d-none");
+    setTimeout(() => {
+      document.getElementById("cartMessage").classList.add("d-none");
+    }, 3000);
+  }
+
+  
+<!-- Bootstrap JS 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS JS 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+
+  <!-- Script -->
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const title = params.get('title') || 'Pink Roses';
+    const price = parseFloat(params.get('price')) || 29.99;
+
+    const flowers = [
+      { title: "Pink Roses", img: "p2.webp", price: 29.99 },
+      { title: "Heart Bouquet", img: "heartb.jpeg", price: 39.99 },
+      { title: "Tulip Bunch", img: "tulip.jpg", price: 24.99 },
+      { title: "Sunset Blooms", img: "sunset.jpeg", price: 27.99 },
+      { title: "Vase Flowers", img: "vase.jpg", price: 34.99 },
+      { title: "White Lilies", img: "waterl.jpg", price: 22.99 }
+    ];
+
+    const selected = flowers.find(f => f.title === title) || flowers[0];
+    document.getElementById("productTitle").textContent = selected.title;
+    document.getElementById("productPrice").textContent = selected.price.toFixed(2);
+    document.getElementById("productImage").src = selected.img;
+
+    let quantity = 1;
+    function updateQuantity(change) {
+      quantity = Math.max(1, quantity + change);
+      document.getElementById("quantity").value = quantity;
+      updateTotal();
+    }
+
+    function updateTotal() {
+      const total = selected.price * quantity;
+      document.getElementById("totalPrice").textContent = total.toFixed(2);
+    }
+
+    updateTotal(); // initialize total
+
+    // Recommendations
+    const container = document.getElementById("recommendContainer");
+    flowers.filter(f => f.title !== selected.title).slice(0, 3).forEach((item, index) => {
+      const col = document.createElement("div");
+      col.className = "col";
+      col.setAttribute("data-aos", "zoom-in-up");
+      col.setAttribute("data-aos-delay", `${index * 100}`);
+      col.innerHTML = `
+        <div class="card recommend-card h-100 shadow-sm">
+          <img src="${item.img}" class="card-img-top" alt="${item.title}">
+          <div class="card-body text-center">
+            <h5 class="card-title">${item.title}</h5>
+            <p>₹${item.price.toFixed(2)}</p>
+            <button class="btn btn-outline-primary" onclick="redirectToBuy('${item.title}', ${item.price})">Buy Now</button>
+          </div>
+        </div>
+      `;
+      container.appendChild(col);
+    });
+
+    function redirectToBuy(title, price) {
+      window.location.href = `buy now.html?title=${encodeURIComponent(title)}&price=${encodeURIComponent(price)}`;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Buy Now | Floral Muse</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    .thumbnail-img {
+      max-width: 60px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 5px;
+    }
+    .thumbnail-img.selected {
+      border-color: #0d6efd;
+    }
+    .variant-label {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm position-relative" style="z-index: 1;">
+    <div class="container">
+      <a class="navbar-brand" href="#">FLORAL MUSE</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about us.html">About us</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact us.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div class="container my-4">
+  <h3 class="mb-3" id="productTitle">Loading...</h3>
+
+  <div class="row">
+    <!-- Image & Thumbnails-->
+    <div class="col-md-5">
+      <img id="mainImage" src="" class="img-fluid mb-3 rounded border" alt="Main Image" />
+      <div id="thumbnails" class="d-flex flex-wrap gap-2"></div>
+      <p class="text-muted mt-2" id="productId">Product ID: #00000</p>
+    </div>
+
+    <!-- Details Column--> 
+    <div class="col-md-7">
+      <p id="priceDisplay" class="fs-4 text-danger">INR 0</p>
+
+      <h6>Choose Variant:</h6>
+      <div id="variantOptions" class="btn-group mb-3" role="group"></div>
+
+      <div class="form-check form-switch mb-3">
+        <input class="form-check-input" type="checkbox" id="vaseSwitch" />
+        <label class="form-check-label" for="vaseSwitch">Add Glass Vase (INR 200)</label>
+      </div>
+
+      <div class="mb-3">
+        <label for="city" class="form-label">Delivery Location:</label>
+        <select class="form-select w-50" id="city">
+          <option>Chennai</option>
+          <option>Mumbai</option>
+          <option>Delhi</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Select Date:</label>
+        <div class="d-flex gap-2 mb-2">
+          <button class="btn btn-outline-secondary btn-sm" id="btnToday">Today<br /><small></small></button>
+          <button class="btn btn-outline-secondary btn-sm" id="btnTomorrow">Tomorrow<br /><small></small></button>
+          <input type="date" class="form-control w-auto" id="customDate" />
+        </div>
+      </div>
+
+      <div class="mb-3 quantity-selector d-flex align-items-center gap-2">
+        <label for="quantity" class="form-label mb-0">Quantity:</label>
+        <button type="button" class="btn btn-outline-secondary btn-sm" id="decQty">−</button>
+        <input
+          type="number"
+          id="quantity"
+          value="1"
+          min="1"
+          class="form-control d-inline"
+          style="width: 60px; text-align: center;"
+          readonly
+        />
+        <button type="button" class="btn btn-outline-secondary btn-sm" id="incQty">+</button>
+      </div>
+
+      <p>Total: ₹<span id="totalPrice">0.00</span></p>
+
+      <form id="orderForm">
+        <div class="mb-3">
+          <label class="form-label">Full Name</label>
+          <input type="text" class="form-control" placeholder="Enter your name" required />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Delivery Address</label>
+          <textarea class="form-control" rows="3" placeholder="Enter address" required></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Payment Method</label>
+          <select class="form-select" required>
+            <option value="" disabled selected>Select payment method</option>
+            <option>UPI</option>
+            <option>Cash on Delivery</option>
+            <option>Credit/Debit Card</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Place Order</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Recommendations -->
+  <hr class="my-5" />
+  <h4>You may also like</h4>
+  <div id="recommendations" class="row row-cols-1 row-cols-md-4 g-3"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const vaseCost = 200;
+
+  // All 15 luxury items with their variants and prices
+  const products = [
+    {
+      id: 13577,
+      title: "Pink Roses",
+      images: ["o1.webp","o1.webp","o1.webp"],
+      variants: [
+        { name: "Classic", price: 3959 },
+        { name: "Deluxe", price: 7720 },
+        { name: "Premium", price: 11679 }
+      ]
+    },
+    {
+      id: 13578,
+      title: "Red Roses",
+      images: ["o2.webp", "o2.webp", "o2.webp"],
+      variants: [
+        { name: "Classic", price: 3999 },
+        { name: "Deluxe", price: 7800 },
+        { name: "Premium", price: 12000 }
+      ]
+    },
+    {
+      id: 13579,
+      title: "Mixed Flowers",
+      images: ["o3.webp", "o3.webp", "o3.webp"],
+      variants: [
+        { name: "Classic", price: 3499 },
+        { name: "Deluxe", price: 6899 },
+        { name: "Premium", price: 9999 }
+      ]
+    },
+    {
+      id: 13580,
+      title: "White Lilies",
+      images: ["o4.webp", "o4.webp", "o4.webp"],
+      variants: [
+        { name: "Classic", price: 5599 },
+        { name: "Deluxe", price: 9999 },
+        { name: "Premium", price: 13999 }
+      ]
+    },
+    {
+      id: 13581,
+      title: "Carnation Combo",
+      images: ["o5.webp", "o5.webp", "o5.webp"],
+      variants: [
+        { name: "Classic", price: 2899 },
+        { name: "Deluxe", price: 5299 },
+        { name: "Premium", price: 7999 }
+      ]
+    },
+    {
+      id: 13582,
+      title: "Orchid Elegance",
+      images: ["o6.webp", "o6.webp", "o6.webp"],
+      variants: [
+        { name: "Classic", price: 6299 },
+        { name: "Deluxe", price: 11000 },
+        { name: "Premium", price: 15999 }
+      ]
+    },
+    {
+      id: 13583,
+      title: "Sunflower Delight",
+      images: ["o7.webp", "o7.webp", "o7.webp"],
+      variants: [
+        { name: "Classic", price: 3199 },
+        { name: "Deluxe", price: 5999 },
+        { name: "Premium", price: 8999 }
+      ]
+    },
+    {
+      id: 13584,
+      title: "Lavender Dreams",
+      images: ["o8.webp", "o8.webp", "o8.webp"],
+      variants: [
+        { name: "Classic", price: 4699 },
+        { name: "Deluxe", price: 8500 },
+        { name: "Premium", price: 12999 }
+      ]
+    },
+    {
+      id: 13585,
+      title: "Tulip Bouquet",
+      images: ["o9.webp", "o9.webp", "o9.webp"],
+      variants: [
+        { name: "Classic", price: 3999 },
+        { name: "Deluxe", price: 7000 },
+        { name: "Premium", price: 10999 }
+      ]
+    },
+    {
+      id: 13586,
+      title: "Peony Charm",
+      images: ["l10.webp", "l10.webp", "l10.webp"],
+      variants: [
+        { name: "Classic", price: 5799 },
+        { name: "Deluxe", price: 10500 },
+        { name: "Premium", price: 15500 }
+      ]
+    },
+    {
+      id: 13587,
+      title: "Daisy Fresh",
+      images: ["bm6.webp", "bm6.webp", "bm6.webp"],
+      variants: [
+        { name: "Classic", price: 2999 },
+        { name: "Deluxe", price: 5499 },
+        { name: "Premium", price: 7999 }
+      ]
+    },
+    {
+      id: 13588,
+      title: "Jasmine Bliss",
+      images: ["l12.webp", "l12.webp", "l12.webp"],
+      variants: [
+        { name: "Classic", price: 3399 },
+        { name: "Deluxe", price: 6000 },
+        { name: "Premium", price: 9000 }
+      ]
+    },
+    {
+      id: 13589,
+      title: "Orchid Fantasy",
+      images: ["l13.webp", "l13.webp", "l13.webp"],
+      variants: [
+        { name: "Classic", price: 6499 },
+        { name: "Deluxe", price: 11000 },
+        { name: "Premium", price: 16000 }
+      ]
+    },
+    {
+      id: 13590,
+      title: "Gardenia Glow",
+      images: ["l14.webp", "l14.webp", "l14.webp"],
+      variants: [
+        { name: "Classic", price: 4299 },
+        { name: "Deluxe", price: 7800 },
+        { name: "Premium", price: 11000 }
+      ]
+    },
+    {
+      id: 13591,
+      title: "Chrysanthemum Mix",
+      images: ["l15.webp", "l15.webp", "l15.webp"],
+      variants: [
+        { name: "Classic", price: 3799 },
+        { name: "Deluxe", price: 6900 },
+        { name: "Premium", price: 10000 }
+      ]
+    }
+  ];
+
+  // DOM Elements
+  const productTitleEl = document.getElementById("productTitle");
+  const mainImageEl = document.getElementById("mainImage");
+  const thumbnailsEl = document.getElementById("thumbnails");
+  const productIdEl = document.getElementById("productId");
+  const priceDisplayEl = document.getElementById("priceDisplay");
+  const variantOptionsEl = document.getElementById("variantOptions");
+  const vaseSwitchEl = document.getElementById("vaseSwitch");
+  const quantityEl = document.getElementById("quantity");
+  const totalPriceEl = document.getElementById("totalPrice");
+  const recommendationsEl = document.getElementById("recommendations");
+  const btnToday = document.getElementById("btnToday");
+  const btnTomorrow = document.getElementById("btnTomorrow");
+  const customDateEl = document.getElementById("customDate");
+  const decQtyBtn = document.getElementById("decQty");
+  const incQtyBtn = document.getElementById("incQty");
+  const orderForm = document.getElementById("orderForm");
+
+  // State
+  let selectedProduct = products[0];
+  let selectedVariantIndex = 0;
+  let selectedImageIndex = 0;
+  let quantity = 1;
+  let vaseAdded = false;
+
+  // Functions
+  function loadProduct(product) {
+    selectedProduct = product;
+    selectedVariantIndex = 0;
+    selectedImageIndex = 0;
+    quantity = 1;
+    vaseAdded = false;
+
+    // Update UI text
+    productTitleEl.textContent = product.title + " Arrangement";
+    productIdEl.textContent = "Product ID: #" + product.id;
+
+    // Set main image
+    updateMainImage();
+
+    // Set thumbnails
+    thumbnailsEl.innerHTML = "";
+    product.images.forEach((img, i) => {
+      const imgEl = document.createElement("img");
+      imgEl.src = img;
+      imgEl.alt = product.title + " thumbnail " + (i + 1);
+      imgEl.className = "thumbnail-img";
+      if (i === selectedImageIndex) imgEl.classList.add("selected");
+      imgEl.addEventListener("click", () => {
+        selectedImageIndex = i;
+        updateMainImage();
+        updateThumbnails();
+      });
+      thumbnailsEl.appendChild(imgEl);
+    });
+
+    // Set variants
+    variantOptionsEl.innerHTML = "";
+    product.variants.forEach((variant, i) => {
+      const variantId = "variant-" + i;
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.className = "btn-check";
+      input.name = "variant";
+      input.id = variantId;
+      input.checked = i === selectedVariantIndex;
+      input.addEventListener("change", () => {
+        selectedVariantIndex = i;
+        updatePrice();
+      });
+
+      const label = document.createElement("label");
+      label.htmlFor = variantId;
+      label.className = "btn btn-outline-dark variant-label";
+      label.innerHTML = `${variant.name}<br/><small>INR ${variant.price}</small>`;
+
+      variantOptionsEl.appendChild(input);
+      variantOptionsEl.appendChild(label);
+    });
+
+    // Reset vase switch
+    vaseSwitchEl.checked = false;
+    vaseAdded = false;
+
+    // Reset quantity
+    quantity = 1;
+    quantityEl.value = quantity;
+
+    // Update prices
+    updatePrice();
+  }
+
+  function updateMainImage() {
+    mainImageEl.src = selectedProduct.images[selectedImageIndex];
+    mainImageEl.alt = selectedProduct.title + " image " + (selectedImageIndex + 1);
+  }
+
+  function updateThumbnails() {
+    Array.from(thumbnailsEl.children).forEach((imgEl, i) => {
+      imgEl.classList.toggle("selected", i === selectedImageIndex);
+    });
+  }
+
+  function updatePrice() {
+    const variantPrice = selectedProduct.variants[selectedVariantIndex].price;
+    const basePrice = variantPrice;
+    const vasePrice = vaseAdded ? vaseCost : 0;
+    const total = (basePrice + vasePrice) * quantity;
+    priceDisplayEl.textContent = "INR " + (basePrice + vasePrice);
+    totalPriceEl.textContent = total.toFixed(2);
+  }
+
+  // Quantity controls
+  function changeQuantity(delta) {
+    quantity = Math.max(1, quantity + delta);
+    quantityEl.value = quantity;
+    updatePrice();
+  }
+
+  // Vase toggle handler
+  vaseSwitchEl.addEventListener("change", () => {
+    vaseAdded = vaseSwitchEl.checked;
+    updatePrice();
+  });
+
+  // Quantity buttons
+  decQtyBtn.addEventListener("click", () => changeQuantity(-1));
+  incQtyBtn.addEventListener("click", () => changeQuantity(1));
+
+  // Date buttons
+  function formatDate(date) {
+    return date.toLocaleDateString("en-GB", { day: "2-digit", month: "short" });
+  }
+
+  function setButtonDates() {
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    btnToday.querySelector("small").textContent = formatDate(today);
+    btnTomorrow.querySelector("small").textContent = formatDate(tomorrow);
+  }
+
+  btnToday.addEventListener("click", () => {
+    const today = new Date();
+    customDateEl.valueAsDate = today;
+  });
+
+  btnTomorrow.addEventListener("click", () => {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    customDateEl.valueAsDate = tomorrow;
+  });
+
+  // Recommendations rendering
+  function renderRecommendations() {
+    recommendationsEl.innerHTML = "";
+    products.forEach((prod) => {
+      if (prod.id === selectedProduct.id) return; // Skip current product
+      const col = document.createElement("div");
+      col.className = "col";
+      col.innerHTML = `
+        <div class="card h-100">
+          <img src="${prod.images[0]}" class="card-img-top" alt="${prod.title}">
+          <div class="card-body text-center">
+            <h6>${prod.title}</h6>
+            <p class="text-danger">INR ${prod.variants[0].price}</p>
+            <button class="btn btn-outline-dark btn-sm">View</button>
+          </div>
+        </div>
+      `;
+      const btn = col.querySelector("button");
+      btn.addEventListener("click", () => {
+        loadProduct(prod);
+        renderRecommendations(); // rerender recommendations to update current selection
+        // Scroll up to buy section
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+      recommendationsEl.appendChild(col);
+    });
+  }
+
+  // Form submit
+  orderForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    alert(`Order placed successfully for ${selectedProduct.title} (${selectedProduct.variants[selectedVariantIndex].name}), Quantity: ${quantity}`);
+    orderForm.reset();
+    vaseSwitchEl.checked = false;
+    vaseAdded = false;
+    quantity = 1;
+    quantityEl.value = quantity;
+    updatePrice();
+  });
+
+  // Initialize
+  setButtonDates();
+  loadProduct(selectedProduct);
+  renderRecommendations();
+</script>
+
+</body>
+</html>

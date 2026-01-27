@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buy Now | Floral Muse</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+
+  <style>
+    body {
+      background-color: #fffdfd;
+      font-family: 'Segoe UI', sans-serif;
+      padding-top: 70px; /* for navbar spacing */
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      color: #d63384 !important;
+    }
+
+    .main-section {
+      margin-top: 30px;
+    }
+
+    .product-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .recommend-card img {
+      height: 200px;
+      object-fit: cover;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .recommend-section {
+      margin-top: 60px;
+    }
+
+    footer {
+      margin-top: 60px;
+      background: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+    }
+
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .quantity-selector button {
+      width: 30px;
+      height: 30px;
+      font-weight: bold;
+    }
+
+    #totalPrice {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="#">Floral Muse</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Section -->
+  <div class="container main-section">
+    <div class="row g-4">
+      <div class="col-md-6" data-aos="fade-right">
+        <div class="product-box">
+          <h2 id="productTitle">Product Title</h2>
+          <p class="text-muted">Price: ₹<span id="productPrice">0.00</span></p>
+
+          <!-- Quantity Selector -->
+          <div class="quantity-selector">
+            <label for="quantity" class="form-label mb-0">Quantity:</label>
+            <button type="button" class="btn btn-outline-secondary" onclick="updateQuantity(-1)">−</button>
+            <input type="number" id="quantity" value="1" min="1" class="form-control d-inline" style="width: 60px; text-align: center;" readonly />
+            <button type="button" class="btn btn-outline-secondary" onclick="updateQuantity(1)">+</button>
+          </div>
+
+          <p>Total: ₹<span id="totalPrice">0.00</span></p>
+
+          <form onsubmit="event.preventDefault(); alert('Order placed successfully!')">
+            <div class="mb-3">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-control" placeholder="Enter your name" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Delivery Address</label>
+              <textarea class="form-control" rows="3" placeholder="Enter address" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Payment Method</label>
+              <select class="form-select">
+                <option>UPI</option>
+                <option>Cash on Delivery</option>
+                <option>Credit/Debit Card</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Place Order</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6 text-center" data-aos="fade-left">
+        <img id="productImage" src="placeholder.jpg" class="img-fluid rounded shadow" alt="Product Image"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recommendations -->
+  <div class="container recommend-section" data-aos="fade-up">
+    <h3 class="mb-4 text-center">You may also like</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-4" id="recommendContainer"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Floral Muse. All rights reserved.
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+
+  <!-- Script -->
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const title = params.get('title') || 'Pink Roses';
+    const price = parseFloat(params.get('price')) || 29.99;
+
+    const flowers = [
+      { title: "Pink Roses", img: "p2.webp", price: 29.99 },
+      { title: "Heart Bouquet", img: "heartb.jpeg", price: 39.99 },
+      { title: "Tulip Bunch", img: "tulip.jpg", price: 24.99 },
+      { title: "Sunset Blooms", img: "sunset.jpeg", price: 27.99 },
+      { title: "Vase Flowers", img: "vase.jpg", price: 34.99 },
+      { title: "White Lilies", img: "waterl.jpg", price: 22.99 }
+    ];
+
+    const selected = flowers.find(f => f.title === title) || flowers[0];
+    document.getElementById("productTitle").textContent = selected.title;
+    document.getElementById("productPrice").textContent = selected.price.toFixed(2);
+    document.getElementById("productImage").src = selected.img;
+
+    let quantity = 1;
+    function updateQuantity(change) {
+      quantity = Math.max(1, quantity + change);
+      document.getElementById("quantity").value = quantity;
+      updateTotal();
+    }
+
+    function updateTotal() {
+      const total = selected.price * quantity;
+      document.getElementById("totalPrice").textContent = total.toFixed(2);
+    }
+
+    updateTotal(); // initialize total
+
+    // Recommendations
+    const container = document.getElementById("recommendContainer");
+    flowers.filter(f => f.title !== selected.title).slice(0, 3).forEach((item, index) => {
+      const col = document.createElement("div");
+      col.className = "col";
+      col.setAttribute("data-aos", "zoom-in-up");
+      col.setAttribute("data-aos-delay", `${index * 100}`);
+      col.innerHTML = `
+        <div class="card recommend-card h-100 shadow-sm">
+          <img src="${item.img}" class="card-img-top" alt="${item.title}">
+          <div class="card-body text-center">
+            <h5 class="card-title">${item.title}</h5>
+            <p>₹${item.price.toFixed(2)}</p>
+            <button class="btn btn-outline-primary" onclick="redirectToBuy('${item.title}', ${item.price})">Buy Now</button>
+          </div>
+        </div>
+      `;
+      container.appendChild(col);
+    });
+
+    function redirectToBuy(title, price) {
+      window.location.href = `buy now.html?title=${encodeURIComponent(title)}&price=${encodeURIComponent(price)}`;
+    }
+  </script>
+</body>
+</html>

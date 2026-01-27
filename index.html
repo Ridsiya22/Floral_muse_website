@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Floral Muse | Luxury Flowers</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- AOS Animations CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+
+  <style>
+    body {
+      background-color: #fefefe;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      color: #c0392b;
+    }
+
+    .tag-btn {
+      margin: 5px;
+      border-radius: 20px;
+    }
+
+    .card img {
+      height: 250px;
+      object-fit: cover;
+    }
+
+    footer {
+      background-color: #f8f9fa;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+    }
+
+    /* Canvas for Falling Flowers */
+    #flowerCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: -1; /* ensure petals fall behind content */
+    }
+  </style>
+</head>
+<body>
+  <!-- Flower Animation Canvas -->
+  <canvas id="flowerCanvas"></canvas>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm position-relative" style="z-index: 1;">
+    <div class="container">
+      <a class="navbar-brand" href="#">FLORAL MUSE</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about us.html">About us</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact us.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="location.html">Location</a></li>
+          <a class="nav-link text-success" href="signin.html">
+          <img src="https://cdn-icons-png.flaticon.com/512/1828/1828490.png" width="20" alt="Sign In"> Sign In
+          </a>
+
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Carousel -->
+  <div id="flowerCarousel" class="carousel slide container mt-3" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-inner rounded shadow-sm">
+      <div class="carousel-item active">
+        <img src="c1.webp" class="d-block w-100" alt="Pink Roses" style="height: 400px; object-fit: cover;" />
+      </div>
+      <div class="carousel-item">
+        <img src="c2.webp" class="d-block w-100" alt="Heart Bouquet" style="height: 400px; object-fit: cover;" />
+      </div>
+      <div class="carousel-item">
+        <img src="birthday.webp" class="d-block w-100" alt="Tulip Bunch" style="height: 400px; object-fit: cover;" />
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#flowerCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#flowerCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#flowerCarousel" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#flowerCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#flowerCarousel" data-bs-slide-to="2"></button>
+    </div>
+  </div>
+
+  <!-- Category Icons -->
+  <section class="container text-center my-5">
+    <div class="row row-cols-2 row-cols-md-5 gx-5 gy-4">
+      <div class="col text-center">
+        <a href="flower.html" style="text-decoration: none; color: inherit;">
+          <img src="flowers.webp" class="img-fluid rounded-circle" alt="Flowers">
+          <p>Bridal Collection</p>
+        </a>
+      </div>
+
+      <div class="col text-center">
+        <a href="birthday.html" style="text-decoration: none; color: inherit;">
+          <img src="birth.webp" class="img-fluid rounded-circle" alt="Birthday">
+          <p>Birthday Collection</p>
+        </a>
+      </div>
+
+      <div class="col text-center">
+        <a href="lux.html" style="text-decoration: none; color: inherit;">
+          <img src="lux.webp" class="img-fluid rounded-circle" alt="Luxury">
+          <p>Luxury Collection</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banners with SHOP NOW (petals behind) -->
+  <section class="container my-5 position-relative" style="z-index: 1;">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <a href="lux.html" style="text-decoration: none;">
+          <img src="banner1.webp" class="img-fluid" alt="Luxury">
+          <div class="btn btn-dark mt-2">SHOP NOW</div>
+        </a>
+      </div>
+      <div class="col-md-6">
+        <a href="affordable1.html" style="text-decoration: none;">
+          <img src="banner2.webp" class="img-fluid" alt="Affordable">
+          <div class="btn btn-dark mt-2">SHOP NOW</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flower Cards -->
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4" id="flowerCards">
+      <!-- Cards will be added by JS -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Floral Muse. All rights reserved.
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+
+  <!-- Flower Cards Script -->
+  <script>
+    const flowers = [
+      { title: "Pink Roses", desc: "Elegant pink roses for any occasion.", img: "p2.webp", price: 29.99 },
+      { title: "Heart Bouquet", desc: "Romantic heart-shaped red rose arrangement.", img: "heartb.jpeg", price: 39.99 },
+      { title: "Tulip Bunch", desc: "Bright tulips wrapped in love.", img: "tulip.jpg", price: 24.99 },
+      { title: "Vase Flowers", desc: "Red roses beautifully placed in a vase.", img: "vase.jpg", price: 34.99 },
+      { title: "Sunset Blooms", desc: "Warm-colored flowers for special evenings.", img: "sunset.jpeg", price: 27.99 },
+      { title: "White Lilies", desc: "Peaceful white lilies in elegant wrap.", img: "waterl.jpg", price: 22.99 }
+    ];
+
+    const container = document.getElementById("flowerCards");
+    flowers.forEach((flower, index) => {
+      const col = document.createElement("div");
+      col.className = "col";
+      col.setAttribute("data-aos", "fade-up");
+      col.setAttribute("data-aos-delay", `${index * 100}`);
+
+      col.innerHTML = `
+        <div class="card h-100 shadow-sm">
+          <img src="${flower.img}" class="card-img-top" alt="${flower.title}">
+          <div class="card-body text-center">
+            <h5 class="card-title">${flower.title}</h5>
+            <p class="card-text">${flower.desc}</p>
+            <button 
+              class="btn btn-outline-success buy-now-btn" 
+              data-title="${flower.title}" 
+              data-price="${flower.price.toFixed(2)}"
+            >Buy Now</button>
+          </div>
+        </div>
+      `;
+      container.appendChild(col);
+    });
+
+    // Buy Now redirection
+    container.addEventListener('click', (e) => {
+      if (e.target.classList.contains('buy-now-btn')) {
+        const button = e.target;
+        const title = encodeURIComponent(button.getAttribute('data-title'));
+        const price = encodeURIComponent(button.getAttribute('data-price'));
+        window.location.href = `buy now.html?title=${title}&price=${price}`;
+      }
+    });
+  </script>
+
+  <!-- Falling Petal Animation -->
+  <script>
+    const canvas = document.getElementById("flowerCanvas");
+    const ctx = canvas.getContext("2d");
+    let flowersArray = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    const flowerImg = new Image();
+    flowerImg.src = "petal.jpg";
+
+    class Flower {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * -canvas.height;
+        this.size = 20 + Math.random() * 20;
+        this.speed = 1 + Math.random() * 1.5;
+        this.swing = Math.random() * 2 * Math.PI;
+      }
+
+      update() {
+        this.y += this.speed;
+        this.x += Math.sin(this.swing) * 0.5;
+        this.swing += 0.02;
+        if (this.y > canvas.height) this.reset();
+      }
+
+      draw() {
+        ctx.drawImage(flowerImg, this.x, this.y, this.size, this.size);
+      }
+    }
+
+    for (let i = 0; i < 40; i++) {
+      flowersArray.push(new Flower());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      flowersArray.forEach(flower => {
+        flower.update();
+        flower.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    flowerImg.onload = () => {
+      animate();
+    };
+  </script>
+</body>
+</html>

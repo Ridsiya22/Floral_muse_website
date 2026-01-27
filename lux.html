@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Luxury Flowers | Floral Muse</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+  <style>
+    body {
+      background-color: #fefefe;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      color: #c0392b;
+    }
+
+    .tag-btn {
+      margin: 5px;
+      border-radius: 20px;
+    }
+
+    .card img {
+      height: 250px;
+      object-fit: cover;
+    }
+
+    footer {
+      background-color: #f8f9fa;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+    }
+
+    /* Canvas for Falling Flowers */
+    #flowerCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: -1; /* ensure petals fall behind content */
+    }
+  </style>
+</head>
+<body>
+  <!-- Flower Animation Canvas -->
+  <canvas id="flowerCanvas"></canvas>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm position-relative" style="z-index: 1;">
+    <div class="container">
+      <a class="navbar-brand" href="#">FLORAL MUSE</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about us.html">About us</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact us.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<div class="container my-5">
+  <h2 class="mb-4 text-center">Luxury Flower Collection</h2>
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+
+    <!-- Cards 1 to 15 -->
+    <!-- Card Template -->
+    <!-- Each card uses: title, image (l1.webp to l15.webp), price -->
+    <!-- You can adjust names/prices as needed -->
+
+    <!-- l1.webp -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="l1.webp" class="card-img-top" alt="Pink Roses">
+        <div class="card-body text-center">
+          <h6>Pink Roses</h6>
+          <p class="text-danger">INR 3959</p>
+          <a href="buy-now.html?title=Pink%20Roses&price=3959" class="btn btn-outline-dark btn-sm">View</a>
+          <a href="buy-now.html?title=Pink%20Roses&price=3959" class="btn btn-success btn-sm mt-1">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- l2.webp -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="l2.webp" class="card-img-top" alt="Heart Bouquet">
+        <div class="card-body text-center">
+          <h6>Heart Bouquet</h6>
+          <p class="text-danger">INR 4599</p>
+          <a href="buy-now.html?title=Heart%20Bouquet&price=4599" class="btn btn-outline-dark btn-sm">View</a>
+          <a href="buy-now.html?title=Heart%20Bouquet&price=4599" class="btn btn-success btn-sm mt-1">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- l3.webp -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="l3.webp" class="card-img-top" alt="Tulip Bunch">
+        <div class="card-body text-center">
+          <h6>Tulip Bunch</h6>
+          <p class="text-danger">INR 4299</p>
+          <a href="buy-now.html?title=Tulip%20Bunch&price=4299" class="btn btn-outline-dark btn-sm">View</a>
+          <a href="buy-now.html?title=Tulip%20Bunch&price=4299" class="btn btn-success btn-sm mt-1">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- l4.webp -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="l4.webp" class="card-img-top" alt="Sunset Blooms">
+        <div class="card-body text-center">
+          <h6>Sunset Blooms</h6>
+          <p class="text-danger">INR 4999</p>
+          <a href="buy-now.html?title=Sunset%20Blooms&price=4999" class="btn btn-outline-dark btn-sm">View</a>
+          <a href="buy-now.html?title=Sunset%20Blooms&price=4999" class="btn btn-success btn-sm mt-1">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- l5.webp -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="l5.webp" class="card-img-top" alt="Red Roses">
+        <div class="card-body text-center">
+          <h6>Red Roses</h6>
+          <p class="text-danger">INR 3999</p>
+          <a href="buy-now.html?title=Red%20Roses&price=3999" class="btn btn-outline-dark btn-sm">View</a>
+          <a href="buy-now.html?title=Red%20Roses&price=3999" class="btn btn-success btn-sm mt-1">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- l6.webp -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="l6.webp" class="card-img-top" alt="Mixed Flowers">
+        <div class="card-body text-center">
+          <h6>Mixed Flowers</h6>
+          <p class="text-danger">INR 3499</p>
+          <a href="buy-now.html?title=Mixed%20Flowers&price=3499" class="btn btn-outline-dark btn-sm">View</a>
+          <a href="buy-now.html?title=Mixed%20Flowers&price=3499" class="btn btn-success btn-sm mt-1">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- l7.webp -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="l7.webp" class="card-img-top" alt="White Lilies">
+        <div class="card-body text-center">
+          <h6>White Lilies</h6>
+          <p class="text-danger">INR 5599</p>
+          <a href="buy-now.html?title=White%20Lilies&price=5599" class="btn btn-outline-dark btn-sm">View</a>
+          <a href="buy-now.html?title=White%20Lilies&price=5599" class="btn btn-success btn-sm mt-1">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- l8.webp -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="l8.webp" class="card-img-top" alt="Carnation Combo">
+        <div class="card-body text-center">
+          <h6>Carnation Combo</h6>
+          <p class="text-danger">INR 2899</p>
+          <a href="buy-now.html?title=Carnation%20Combo&price=2899" class="btn btn-outline-dark btn-sm">View</a>
+          <a href="buy-now.html?title=Carnation%20Combo&price=2899" class="btn btn-success btn-sm mt-1">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- l9.webp -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="l9.webp" class="card-img-top" alt="Orchid Glamour">
+        <div class="card-body text-center">
+          <h6>Orchid Glamour</h6>
+          <p class="text-danger">INR 4899</p>
+          <a href="buy-now.html?title=Orchid%20Glamour&price=4899" class="btn btn-outline-dark btn-sm">View</a>
+          <a href="buy-now.html?title=Orchid%20Glamour&price=4899" class="btn btn-success btn-sm mt-1">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- l10.webp -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="l10.webp" class="card-img-top" alt="Exotic Mix">
+        <div class="card-body text-center">
+          <h6>Exotic Mix</h6>
+          <p class="text-danger">INR 5590</p>
+          <a href="buy-now.html?title=Exotic%20Mix&price=5590" class="btn btn-outline-dark btn-sm">View</a>
+          <a href="buy-now.html?title=Exotic%20Mix&price=5590" class="btn btn-success btn-sm mt-1">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- l11.webp -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="l11.webp" class="card-img-top" alt="Purple Perfection">
+        <div class="card-body text-center">
+          <h6>Purple Perfection</h6>
+          <p class="text-danger">INR 4990</p>
+          <a href="buy-now.html?title=Purple%20Perfection&price=4990" class="btn btn-outline-dark btn-sm">View</a>
+          <a href="buy-now.html?title=Purple%20Perfection&price=4990" class="btn btn-success btn-sm mt-1">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- l12.webp -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="l12.webp" class="card-img-top" alt="Royal Rose Box">
+        <div class="card-body text-center">
+          <h6>Royal Rose Box</h6>
+          <p class="text-danger">INR 5690</p>
+          <a href="buy-now.html?title=Royal%20Rose%20Box&price=5690" class="btn btn-outline-dark btn-sm">View</a>
+          <a href="buy-now.html?title=Royal%20Rose%20Box&price=5690" class="btn btn-success btn-sm mt-1">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- l13.webp -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="l13.webp" class="card-img-top" alt="Luxury Orchids">
+        <div class="card-body text-center">
+          <h6>Luxury Orchids</h6>
+          <p class="text-danger">INR 5290</p>
+          <a href="buy-now.html?title=Luxury%20Orchids&price=5290" class="btn btn-outline-dark btn-sm">View</a>
+          <a href="buy-now.html?title=Luxury%20Orchids&price=5290" class="btn btn-success btn-sm mt-1">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- l14.webp -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="l14.webp" class="card-img-top" alt="Rose Basket">
+        <div class="card-body text-center">
+          <h6>Rose Basket</h6>
+          <p class="text-danger">INR 3990</p>
+          <a href="buy-now.html?title=Rose%20Basket&price=3990" class="btn btn-outline-dark btn-sm">View</a>
+          <a href="buy-now.html?title=Rose%20Basket&price=3990" class="btn btn-success btn-sm mt-1">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- l15.webp -->
+    <div class="col">
+      <div class="card h-100">
+        <img src="l15.webp" class="card-img-top" alt="Pastel Elegance">
+        <div class="card-body text-center">
+          <h6>Pastel Elegance</h6>
+          <p class="text-danger">INR 4890</p>
+          <a href="buy-now.html?title=Pastel%20Elegance&price=4890" class="btn btn-outline-dark btn-sm">View</a>
+          <a href="buy-now.html?title=Pastel%20Elegance&price=4890" class="btn btn-success btn-sm mt-1">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<footer class="bg-dark text-white py-4 mt-5">
+  <div class="container text-center">
+    <p class="mb-2">&copy; 2025 Floral Muse. All rights reserved.</p>
+    <ul class="list-inline mb-0">
+      <li class="list-inline-item"><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+      <li class="list-inline-item mx-3">|</li>
+      <li class="list-inline-item"><a href="#" class="text-white text-decoration-none">Terms of Service</a></li>
+      <li class="list-inline-item mx-3">|</li>
+      <li class="list-inline-item"><a href="#" class="text-white text-decoration-none">Contact Us</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
