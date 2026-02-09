@@ -2,9 +2,10 @@
 
 FLORAL MUSE -ECOMMERCE FLOWER SHOP WEBSITE
 
--> A responsive and visually appealing flower shop website built with HTML5, CSS3, Bootstrap 5, and JavaScript. Features dynamic flower cards, a falling petal animation, and a smooth user experience for browsing     and purchasing floral arrangements.
+A responsive and visually appealing flower shop website built with HTML5, CSS3, Bootstrap 5, and JavaScript. Features dynamic flower cards, a falling petal animation, and a smooth user experience for browsing     and purchasing floral arrangements.
 
 FEATURES
+
 1.Responsive Design - Fully compatible with all screen sizes using Bootstrap 5.
 
 2.Dynamic Flower Cards - Generated via JavaScript with hover effects and smooth animations (using AOS library).
@@ -53,11 +54,12 @@ KEY CODE HIGHLIGHTS
 Flower data is stored in an array and rendered dynamically:
 
 2. Falling Petal Animation
-->Uses HTML5 Canvas to create a calming petal fall effect:
+   
+ ->Uses HTML5 Canvas to create a calming petal fall effect:
 
-->Flower class manages position, speed, and rendering.
+ ->Flower class manages position, speed, and rendering.
 
-->Animation loop updates and draws petals continuously.
+ ->Animation loop updates and draws petals continuously.
 
 3. Buy Now Redirection
 =>Clicking "Buy Now" passes product details via URL parameters:
