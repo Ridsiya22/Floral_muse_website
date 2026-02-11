@@ -4,181 +4,194 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Us | Floral Muse</title>
-  
-  <!-- Bootstrap CSS -->
+
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
+      background: #fffaf6;
     }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+      url("assets/sunset.jpeg") center/cover no-repeat;
+      color: white;
+      padding: 100px 0;
+      text-align: center;
+    }
+
     .gold-icon {
       background-color: #bfa46f;
       color: white;
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       font-weight: bold;
     }
+
+    .section-box {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
   </style>
 </head>
+
 <body>
 
-<!-- Navigation -->
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="#">Floral Muse</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <a class="navbar-brand fw-bold" href="index.html">Floral Muse</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="about us.html">about us</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact us.html">contact</a></li>
+        <li class="nav-item"><a class="nav-link active" href="about us.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact us.html">Contact</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- What We Do -->
+<!-- HERO -->
+<section class="hero">
+  <div class="container" data-aos="fade-up">
+    <h1 class="display-5 fw-bold">About Floral Muse</h1>
+    <p class="lead">Delivering happiness through flowers 🌸</p>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
 <div class="container mt-5">
   <div class="row align-items-center">
-    <div class="col-md-6">
-      <img src="Screenshot 2025-06-16 102933.png" class="img-fluid rounded" alt="Florist">
+    <div class="col-md-6" data-aos="fade-right">
+      <img src="assets/vase.jpg" class="img-fluid rounded shadow">
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" data-aos="fade-left">
       <h2>What We Do</h2>
-      <p><strong>Floral Muse</strong>, owned and managed by <strong>Ridsiya Nimi L J</strong>, is a floral e-commerce brand delivering flowers and gifts to over Nagercoil in India. We’re also expanding further!</p>
+      <p>
+        <strong>Floral Muse</strong> is a premium floral e-commerce platform delivering
+        hand-crafted bouquets and gifts across Nagercoil and beyond.
+        Every flower tells a story of love, care, and celebration.
+      </p>
     </div>
   </div>
 </div>
 
-<!-- How We Do It -->
+<!-- HOW WE DO -->
 <div class="container mt-5">
-  <h2 class="text-center mb-4">How We Do It</h2>
+  <h2 class="text-center mb-4">How We Work</h2>
   <div class="row g-4">
-    <div class="col-md-4">
-      <div class="d-flex align-items-start">
-        <div class="gold-icon me-3">I</div>
+
+    <div class="col-md-4" data-aos="zoom-in">
+      <div class="section-box d-flex">
+        <div class="gold-icon me-3">1</div>
         <div>
-          <h5>Order Placement</h5>
-          <p>Place your order via our website or WhatsApp.</p>
+          <h5>Place Order</h5>
+          <p>Select your favorite flowers online.</p>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="d-flex align-items-start">
-        <div class="gold-icon me-3">II</div>
+
+    <div class="col-md-4" data-aos="zoom-in">
+      <div class="section-box d-flex">
+        <div class="gold-icon me-3">2</div>
         <div>
-          <h5>Order Confirmation</h5>
-          <p>Once paid, your order is marked as ‘Pending’ in our system.</p>
+          <h5>Confirmation</h5>
+          <p>Your order is instantly verified.</p>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="d-flex align-items-start">
-        <div class="gold-icon me-3">III</div>
+
+    <div class="col-md-4" data-aos="zoom-in">
+      <div class="section-box d-flex">
+        <div class="gold-icon me-3">3</div>
         <div>
-          <h5>Trusted Partners</h5>
-          <p>Orders are passed to skilled partner florists.</p>
+          <h5>Preparation</h5>
+          <p>Expert florists craft your bouquet.</p>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="d-flex align-items-start">
-        <div class="gold-icon me-3">IV</div>
+
+    <div class="col-md-4" data-aos="zoom-in">
+      <div class="section-box d-flex">
+        <div class="gold-icon me-3">4</div>
         <div>
-          <h5>Craftsmanship in Progress</h5>
-          <p>Our florists prep every detail carefully.</p>
+          <h5>Quality Check</h5>
+          <p>Each order is carefully reviewed.</p>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="d-flex align-items-start">
-        <div class="gold-icon me-3">V</div>
+
+    <div class="col-md-4" data-aos="zoom-in">
+      <div class="section-box d-flex">
+        <div class="gold-icon me-3">5</div>
         <div>
-          <h5>Quality Assurance</h5>
-          <p>Orders undergo a strict quality check.</p>
+          <h5>Dispatch</h5>
+          <p>Your flowers are packed safely.</p>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="d-flex align-items-start">
-        <div class="gold-icon me-3">VI</div>
+
+    <div class="col-md-4" data-aos="zoom-in">
+      <div class="section-box d-flex">
+        <div class="gold-icon me-3">6</div>
         <div>
-          <h5>Order Delivered</h5>
-          <p>You get an email after delivery for feedback.</p>
+          <h5>Delivery</h5>
+          <p>Delivered with love and care.</p>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 
-<!-- Trust & Quality -->
-<div class="container mt-5 text-center">
-  <h3>A Brand Built On Trust & Quality</h3>
-  <p class="lead">At Floral Muse, we pride ourselves on delivering floral and gifting experiences that exceed expectations — crafted with love, care, and quality at every stage.</p>
+<!-- TRUST -->
+<div class="container text-center mt-5" data-aos="fade-up">
+  <h3>Built on Trust & Quality</h3>
+  <p class="lead">
+    We aim to make every moment special through elegant floral experiences.
+  </p>
 </div>
 
-<!-- Ratings -->
-<div class="container text-center my-5">
-  <div class="row justify-content-center">
-    <div class="col-md-3">
-      <h5>Google</h5>
-      <p>⭐⭐⭐☆<br>Rating: 4.2</p>
-    </div>
-    <div class="col-md-3">
-      <h5>Trustpilot</h5>
-      <p>⭐⭐⭐⭐<br>Rating: 4.0</p>
-    </div>
-    <div class="col-md-3">
-      <h5>Website</h5>
-      <p>⭐⭐⭐⭐<br>Rating: 4.0</p>
-    </div>
-  </div>
+<!-- CTA -->
+<div class="bg-dark text-white text-center py-5 mt-5">
+  <h4>Let Flowers Speak Your Feelings 🌷</h4>
+  <p>Start your floral journey with Floral Muse today.</p>
+  <a href="index.html" class="btn btn-outline-light">Shop Now</a>
 </div>
 
-<!-- Call to Action -->
-<div class="bg-dark text-white text-center py-5">
-  <h4>We're your brand of happiness</h4>
-  <p>We believe in going above and beyond. Trust us to deliver smiles every time.</p>
-  <a href="#" class="btn btn-outline-light mt-2">Experience 'Happiness Delivered' Today</a>
-</div>
-
-<!-- Footer -->
+<!-- FOOTER -->
 <footer class="bg-black text-white py-4">
   <div class="container d-flex justify-content-between flex-wrap">
-    <div><h5>BloomsFlora</h5></div>
+    <div><h5>Floral Muse</h5></div>
+
     <div>
       <h6>Company</h6>
       <ul class="list-unstyled">
-        <li><a class="text-white text-decoration-none" href="about us .html">About Us</a></li>
-        <li><a class="text-white text-decoration-none" href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-    <div>
-      <h6>Community</h6>
-      <ul class="list-unstyled">
-        <li><a class="text-white text-decoration-none" href="#">Blog</a></li>
-        <li><a class="text-white text-decoration-none" href="#">My Account</a></li>
-      </ul>
-    </div>
-    <div>
-      <h6>Cities</h6>
-      <ul class="list-unstyled">
-        <li><a class="text-white text-decoration-none" href="#">Flowers Delivery nagercoil</a></li>
-
+        <li><a class="text-white text-decoration-none" href="about us.html">About</a></li>
+        <li><a class="text-white text-decoration-none" href="contact us.html">Contact</a></li>
       </ul>
     </div>
   </div>
 </footer>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
 
 </body>
 </html>
